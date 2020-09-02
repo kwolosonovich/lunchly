@@ -7,6 +7,12 @@ const Reservation = require("./models/reservation");
 
 const router = new express.Router();
 
+
+/** favicon router */
+router.get("/favicon.ico", (req, res) => {
+  res.sendStatus(204)
+})
+
 /** Homepage: show list of customers. */
 
 router.get("/", async function(req, res, next) {
