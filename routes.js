@@ -24,6 +24,12 @@ router.get("/", async function(req, res, next) {
   }
 });
 
+/** For to find a customer */
+
+router.post("/", async function(req, res, next) {
+    console.log(req)
+})
+
 /** Form to add a new customer. */
 
 router.get("/add/", async function(req, res, next) {
