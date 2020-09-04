@@ -1,10 +1,9 @@
 /** Routes for Lunchly */
 
 const express = require("express");
-
 const Customer = require("./models/customer");
 const Reservation = require("./models/reservation");
-
+const ExpressError = require("./expressError");
 const router = new express.Router();
 
 
@@ -24,10 +23,23 @@ router.get("/", async function(req, res, next) {
   }
 });
 
-/** For to find a customer */
+/** Form to find a customer */
 
 router.post("/", async function(req, res, next) {
-    console.log(req)
+    let searchName = req.body.customerName.split(" ")
+    if (searchName.length < 2) {
+      throw new ExpressError("Please enter first and last name", 400);
+    }
+    try {
+      let firstName = searchName[0]
+      firstName.charAt(0).toUpperCase() + firstName.slice(1);
+      let lastName = searchName[1]
+      lastName.charAt(0).toUpperCase() + lastName.slice(1);
+      let searchResults = await Customer.search(firstName, lastName)
+      return res.render("customer_detail.html", { customer, reservations });
+    } catch (err) {
+      return next(err)
+    }
 })
 
 /** Form to add a new customer. */

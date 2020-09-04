@@ -32,16 +32,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/add/">Add a Customer</a>
         </li>
-
-        <li>
-          <form class="form-inline" action="/" method="POST">
-            <div class="form">
-              <input class="form-control mr-sm-2" type="text" placeholder="Customer Name" aria-label="Search">
-            </div>
-            <button class="btn btn-secondary bg-white text-secondary">Search</button>
-          </form>
-        </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0" action="/" method="POST">
+        <input class="form-control mr-sm-2" type="text" name="customerName" placeholder="Customer Name">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </nav>
 
